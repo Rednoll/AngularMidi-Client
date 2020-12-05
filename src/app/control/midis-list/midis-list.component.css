@@ -1,10 +1,8 @@
-mat-card {
-
-    background-color: darkslategray;
-    overflow: auto;
-}
-
 mat-selection-list {
 
+    position: relative;
+
     overflow: auto;
+
+    padding-top: 0px !important;
 }

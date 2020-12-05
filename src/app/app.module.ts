@@ -15,13 +15,15 @@ import { MatListModule } from '@angular/material/list';
 import { MidiComponent } from './midi/midi.component';
 import { MidiButtonComponent } from './midi/button/midi-button.component';
 import { MidisListComponent } from './control/midis-list/midis-list.component';
+import { PlayControlComponent } from './control/play-control/play-control.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MidiComponent,
     MidiButtonComponent,
-    MidisListComponent
+    MidisListComponent,
+    PlayControlComponent
   ],
   imports: [
     BrowserModule,

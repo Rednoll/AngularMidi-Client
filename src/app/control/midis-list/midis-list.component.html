@@ -1,7 +1,5 @@
-<mat-card>
-    <mat-selection-list [multiple]="false">
-        <mat-list-option *ngFor="let midi of list.midis" [value]="midi">
-            {{midi}}
-        </mat-list-option>
-    </mat-selection-list>
-</mat-card>
+<mat-selection-list [multiple]="false" (selectionChange)="select($event.option.value)">
+    <mat-list-option *ngFor="let midi of list.midis" [value]="midi">
+        {{midi}}
+    </mat-list-option>
+</mat-selection-list>

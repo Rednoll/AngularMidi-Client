@@ -1,19 +1,31 @@
-<div>
-    <mat-grid-list cols="3" rowHeight="12:3">
-        <mat-grid-tile rowspan="5" colspan="1">
-            <app-midis-list></app-midis-list>
-        </mat-grid-tile>
+<mat-card>
 
-        <mat-grid-tile rowspan="5" colspan="2">
-            <app-midi></app-midi>
-        </mat-grid-tile>
+    <div id="app-grid">
 
-        <mat-grid-tile rowspan="1" colspan="1">
-            <mat-icon>save</mat-icon>
-        </mat-grid-tile>
+        <div class="app-row-grid top-row-grid">
+        
+            <div class="common-container left-container">
+                <mat-card class="midis-list-card"><app-midis-list></app-midis-list></mat-card>
+            </div>
 
-        <mat-grid-tile rowspan="1" colspan="2">
-            <mat-icon>clock</mat-icon>
-        </mat-grid-tile>
-    </mat-grid-list>
-</div>
+            <div class="common-container right-container">
+                <app-midi></app-midi>
+            </div>
+        
+        </div>
+
+        <div class="app-row-grid bottom-row-grid">
+
+            <div class="common-container left-container">
+                <mat-icon>save</mat-icon>
+            </div>
+
+            <div class="common-container right-container">
+                <app-play-control></app-play-control>
+            </div>
+
+        </div>
+
+    </div>
+
+</mat-card>

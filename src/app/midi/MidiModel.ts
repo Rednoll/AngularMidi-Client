@@ -22,6 +22,8 @@ export class MidiData {
 
     rows: MidiRowData[] = []
 
+    interval: any
+
     constructor(rowLength?: number) {
 
         this.rowLength = rowLength ? rowLength : 0;
@@ -29,7 +31,14 @@ export class MidiData {
 
     launch() {
 
-        setInterval(()=> this.play(), 200*(this.rowLength));
+        if(this.interval) return;
+
+        this.interval = setInterval(()=> this.play(), 200*(this.rowLength));
+    }
+
+    stop() {
+
+        clearInterval(this.interval);
     }
 
     createRow(instrument: InstrumentData): MidiRowData {

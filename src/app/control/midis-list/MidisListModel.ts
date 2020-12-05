@@ -15,6 +15,11 @@ export class MidisListData {
         }
     }
 
+    static fromArray(arr: string[]): MidisListData {
+    
+        return new MidisListData(arr);
+    }
+
     static fromDto(dto: MidisListDto): MidisListData {
 
         return new MidisListData(dto.midis);
