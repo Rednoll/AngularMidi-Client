@@ -1,23 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MidiData } from './MidiData';
+import { Component, Input } from '@angular/core';
+import { InstrumentService } from './instrument/instrument.service';
+import { MidiService } from './midi.service';
+import { MidiData } from './MidiModel';
 
 @Component({
   selector: 'app-midi',
   templateUrl: './midi.component.html',
   styleUrls: ['./midi.component.css']
 })
-export class MidiComponent implements OnInit {
+export class MidiComponent {
 
-    midi: MidiData = new MidiData(8);
+    midi: MidiData
 
-    ngOnInit(): void {
+    constructor(private midiService: MidiService, private instrumentService: InstrumentService) {
         
-        this.midi.launch();
+        this.midi = new MidiData(8);
+
+        midiService.findById(6).subscribe(midi => {
+            
+            this.midi = midi;
+            this.midi.launch();
+        });
+        
+        //instrumentService.findAll().subscribe(instruments => instruments.forEach(instrument => this.midi.createRow(instrument)));
+    }
+
+    saveMidi() {
+
+        this.midiService.save(this.midi);
     }
 }
-
-//color 0: rgba(255, 190, 11, 1)
-//color 1: rgba(251, 86, 7, 1)
-//color 2: rgba(255, 0, 110, 1)
-//color 3: rgba(131, 56, 236, 1)
-//color 4: rgba(58, 134, 255, 1)

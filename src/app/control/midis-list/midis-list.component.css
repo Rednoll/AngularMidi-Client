@@ -1,0 +1,10 @@
+mat-card {
+
+    background-color: darkslategray;
+    overflow: auto;
+}
+
+mat-selection-list {
+
+    overflow: auto;
+}

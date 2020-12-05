@@ -1,8 +1,10 @@
 <mat-card>
     <mat-grid-list [cols]="midi.rowLength" rowHeight="1:1">
-        <mat-grid-tile
-            *ngFor="let currentButton of midi.buttons; let i = index">
-            <app-midi-button [(button)]="midi.buttons[i]"></app-midi-button>
-        </mat-grid-tile>
+        <div *ngFor="let row of midi.rows; let i = index">
+            <mat-grid-tile
+                *ngFor="let button of midi.rows[i].buttons; let j = index">
+                <app-midi-button [(button)]="midi.rows[i].buttons[j]"></app-midi-button>
+            </mat-grid-tile>
+        </div>
     </mat-grid-list>
 </mat-card>

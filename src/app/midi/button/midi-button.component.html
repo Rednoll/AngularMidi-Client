@@ -1,1 +1,7 @@
-<mat-card (click)="click()" [style.background-color]="button.active ? button.color : 'rgba(220, 220, 220, 0.5)'"></mat-card>
+<mat-card
+    (click)="click()"
+    [style.background-color]="button.active ? button.row.color.toCss() : 'rgba(220, 220, 220, 0.5)'"
+    [style.box-shadow]="button.active && button.playing ? 
+    '0 0 8.5px 8.5px '+button.row.color.addLightness(-6).toCss()+',inset 0 0 16px 10px '+button.row.color.addLightness(20).toCss()+' !important' : ''"
+>
+</mat-card>

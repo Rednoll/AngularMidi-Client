@@ -4,12 +4,32 @@
     justify-content: center;
     align-items: center;
 
-    height: 100%;
-    width: 100%;
+    border: 1px solid blue;
+    height: 99%;
+}
+
+mat-grid-tile {
+
+    border: 1px solid red;
+}
+
+mat-grid-list {
+
+    position: relative;
+    width: 900px;
+    border: 1px solid skyblue;
 }
 
 app-midi {
 
-    width: 900px;
-    max-width: 900px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+app-midis-list {
+    
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
 }
