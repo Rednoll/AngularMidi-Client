@@ -19,6 +19,8 @@ mat-card {
 
     padding: 0px;
 
+    font-size: 0.8vw;
+
     transition:
         box-shadow 0.2s,
         width 0.2s,
