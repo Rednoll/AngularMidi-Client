@@ -8,7 +8,7 @@
                 <mat-card class="midis-list-card"><app-midis-list></app-midis-list></mat-card>
             </div>
 
-            <div class="common-container right-container">
+            <div class="common-container right-container midi-keyboard-container">
                 <mat-card class="midi-name-card">
                     <mat-form-field appearance="standard">
                         <input matInput placeholder="some name" (input)="nameChanged($event)" [value]="midiService.currentMidi.name">
@@ -22,11 +22,15 @@
         <div class="app-row-grid bottom-row-grid">
 
             <div class="common-container left-container">
-                <app-midis-data-control></app-midis-data-control>
+                <mat-card class="midis-data-control-card">
+                    <app-midis-data-control></app-midis-data-control>
+                </mat-card>
             </div>
 
             <div class="common-container right-container">
-                <app-play-control></app-play-control>
+                <mat-card class="play-control-card">
+                    <app-play-control></app-play-control>
+                </mat-card>
             </div>
 
         </div>

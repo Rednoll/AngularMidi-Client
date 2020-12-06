@@ -72,12 +72,13 @@
     color: white;
 
     width: calc(100% - 64px);
-    margin: 16px 16px 0px 16px;
 
-    height: 1.25em;
-    max-height: 1.25em;
+    height: 1.6vw;
+    max-height: 1.6vw;
 
-    font-size: 1.6rem;
+    font-size: 1.3vw;
+
+    margin-bottom: 16px;
 }
 
 .midi-name-card mat-form-field {
@@ -88,10 +89,7 @@
 
 app-midi {
 
-    flex-grow: 8;
-
     width: calc(100% - 32px);
-    margin: 16px;
 }
 
 mat-card {
@@ -109,6 +107,27 @@ mat-card {
     height: 100%;
     max-width: calc(100% - 64px);
     width: 100%;
+}
+
+.midis-data-control-card {
+
+    background-color: darkslategray;
+    margin: 16px;
+
+    max-width: calc(100% - 64px);
+    width: 100%;
+}
+
+.play-control-card {
+
+    background-color: darkslategray;
+    margin: 16px;
+}
+
+.midi-keyboard-container {
+
+    justify-content: flex-start;
+    padding: 16px;
 }
 
 app-midis-list {

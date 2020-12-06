@@ -1,20 +1,36 @@
 .midis-data-control-root {
 
+    position: relative;
+
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 
     background-color: darkslategrey;
 }
 
 .midis-data-control-root mat-card {
 
+    position: relative;
+    
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+
     padding: 8px !important;
-    width: 24px;
-    height: 24px;
+    max-width: calc(2vw - 16px);
+    max-height: calc(2vw - 16px);
 
     transition: box-shadow 0.2s;
 
     cursor: pointer;
+}
+
+.midis-data-control-root mat-card mat-icon {
+
+    font-size: 1.3vw;
+    height: 1.3vw !important;
 }
 
 .midis-data-control-root .stub {
