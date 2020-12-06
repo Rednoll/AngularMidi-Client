@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MidiModel, MidiDto } from './Midi';
-import { MidiRowDto } from './row/MidiRowModel';
-import { map } from 'rxjs/operators';
-import { InstrumentService } from './instrument/instrument.service';
-import { MidiListDto } from '../control/midis-list/MidiListModel';
+import { MidiListUnitDto } from 'src/app/io/dto/midi-list-unit.dto';
+import { MidiModel } from 'src/app/model/midi.model';
+import { MidiRepository } from 'src/app/io/midi.repository';
+import { InstrumentService } from './instrument.service';
 
 @Injectable({
     providedIn: 'root'
@@ -16,12 +15,11 @@ export class MidiService {
     clockGenerator: any
     playState: PlayState = PlayState.STOP
 
-    midisList: MidiListDto[] = []
+    midisList: MidiListUnitDto[] = []
 
-    constructor(private http: HttpClient, private instrumentService: InstrumentService) { 
+    constructor(private http: HttpClient, public midiRepository: MidiRepository, public instrumentService: InstrumentService) { 
 
-        instrumentService.findAll().subscribe(instruments => instruments.forEach(instrument => this.currentMidi.createRow(instrument)));
-    
+        this.viewEmpty(true);
         this.updateMidisList();
     }
 
@@ -107,7 +105,7 @@ export class MidiService {
 
     fetchList() {
 
-        return this.http.get<Array<MidiListDto>>("http://localhost:8080/midi/list");
+        return this.midiRepository.fetchList();
     }
 
     deleteCurrentMidi() {
@@ -117,11 +115,10 @@ export class MidiService {
 
     delete(midi: MidiModel, callback?: ()=> any) {
 
-        if(!midi.id) return;
-
-        return this.http.delete("http://localhost:8080/midi/"+midi.id).subscribe(()=> {
-            this.updateMidisList()
+        return this.midiRepository.delete(midi, ()=> {
+            
             if(callback) callback();
+            this.updateMidisList()
         });
     }
 
@@ -132,27 +129,17 @@ export class MidiService {
 
     save(midi: MidiModel) {
 
-        if(midi.name == "" || !midi.name) {
-
-            return;
-        }
-
-        this.http.post<number>("http://localhost:8080/midi", midi.toDto()).subscribe((id)=> {
-            this.updateMidisList();
-            midi.id = id;
-        });
+        return this.midiRepository.save(midi, ()=> this.updateMidisList());
     }
 
     findByName(name: string) {
 
-        return this.http.get<MidiDto>("http://localhost:8080/midi/"+name)
-            .pipe(map(dto => MidiModel.fromDto(dto, this.instrumentService)));
+        return this.midiRepository.findByName(name);
     }
 
     findById(id: number) {
 
-        return this.http.get<MidiDto>("http://localhost:8080/midi/"+id)
-            .pipe(map(dto => MidiModel.fromDto(dto, this.instrumentService)));
+        return this.midiRepository.findById(id);
     }
 }
 

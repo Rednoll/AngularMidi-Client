@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MidiService } from 'src/app/midi/midi.service';
+import { MidiService } from 'src/app/service/midi.service';
 
 @Component({
   selector: 'app-midis-list',

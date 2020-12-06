@@ -1,8 +1,8 @@
-import { MidiButtonData } from './button/MidiButtonModel';
-import { Hsl } from '../utils/Hsl';
-import { MidiRowData, MidiRowDto } from './row/MidiRowModel';
-import { InstrumentData, InstrumentDto } from './instrument/InstrumentModel';
-import { InstrumentService } from './instrument/instrument.service';
+import { Hsl } from '../utils/hsl.utils';
+import { MidiRowModel } from './midi-row.model';
+import { InstrumentModel } from './instrument.model';
+import { InstrumentRepository } from 'src/app/io/instrument.repository';
+import { MidiDto } from '../io/dto/midi.dto';
 
 export class MidiModel {
  
@@ -20,17 +20,17 @@ export class MidiModel {
         new Hsl(217, 100, 61)
     ]
 
-    rows: MidiRowData[] = []
+    rows: MidiRowModel[] = []
 
     constructor(rowLength?: number) {
 
         this.rowLength = rowLength ? rowLength : 0;
     }
 
-    createRow(instrument: InstrumentData): MidiRowData {
+    createRow(instrument: InstrumentModel): MidiRowModel {
 
         let rowIndex = this.rows.length;
-        let row = new MidiRowData(instrument, this.rowColors[rowIndex], this.rowLength);
+        let row = new MidiRowModel(instrument, this.rowColors[rowIndex], this.rowLength);
         
         this.rows.push(row);
 
@@ -76,7 +76,7 @@ export class MidiModel {
     }
 
     //async load!
-    static fromDto(dto: MidiDto, instrumentService: InstrumentService): MidiModel {
+    static fromDto(dto: MidiDto, instrumentRepository: InstrumentRepository): MidiModel {
 
         let rowLength = dto.rows[0].buttons.length;
     
@@ -86,7 +86,7 @@ export class MidiModel {
 
         dto.rows.forEach(rowDto => {
             
-            instrumentService.findById(rowDto.instrument).subscribe(instrument => {
+            instrumentRepository.findById(rowDto.instrument).subscribe(instrument => {
 
                 let row = midi.createRow(instrument);
                 
@@ -99,20 +99,3 @@ export class MidiModel {
         return midi;
     }
 }
-
-export interface MidiDto {
-
-    id?: number
-    name: string
-    rows: Array<MidiRowDto>
-}
-
-/* colors
-
-new MidiButtonData("rgba(255, 190, 11, 1)", new Audio()),
-new MidiButtonData("rgba(251, 86, 7, 1)", new Audio()),
-new MidiButtonData("rgba(255, 0, 110, 1)", new Audio()),
-new MidiButtonData("rgba(131, 56, 236, 1)", new Audio()),
-new MidiButtonData("rgba(58, 134, 255, 1)", new Audio()),
-
-*/

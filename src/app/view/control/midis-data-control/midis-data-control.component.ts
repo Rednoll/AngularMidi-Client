@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { InstrumentService } from 'src/app/midi/instrument/instrument.service';
-import { MidiService } from 'src/app/midi/midi.service';
-import { MidiModel } from 'src/app/midi/Midi';
+import { MidiService } from 'src/app/service/midi.service';
+
+import { MidiModel } from 'src/app/model/midi.model';
 
 @Component({
 
@@ -11,7 +11,7 @@ import { MidiModel } from 'src/app/midi/Midi';
 })
 export class MidisDataControlComponent {
 
-    constructor(private midiService: MidiService, private instrumentService: InstrumentService) {
+    constructor(private midiService: MidiService) {
 
     }
 
@@ -32,7 +32,7 @@ export class MidisDataControlComponent {
 
     fork() {
 
-        let forkedMidi = MidiModel.fromDto(this.midiService.currentMidi.toDto(), this.instrumentService);
+        let forkedMidi = MidiModel.fromDto(this.midiService.currentMidi.toDto(), this.midiService.instrumentService.repository);
             forkedMidi.id = -1;
             forkedMidi.name += "-Fork"
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MidiService } from './midi/midi.service';
+import { MidiService } from 'src/app/service/midi.service';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,8 @@
-export class InstrumentData {
+import { InstrumentDto } from '../io/dto/instrument.dto';
 
-    static EMPTY: InstrumentData = new InstrumentData(-1, "");
+export class InstrumentModel {
+
+    static EMPTY: InstrumentModel = new InstrumentModel(-1, "");
 
     id: number
     name: string
@@ -17,14 +19,9 @@ export class InstrumentData {
         this.audio.load();
     }
 
-    static fromDto(dto: InstrumentDto): InstrumentData {
+    static fromDto(dto: InstrumentDto): InstrumentModel {
 
-        return new InstrumentData(dto.id, dto.name);
+        return new InstrumentModel(dto.id, dto.name);
     }
 }
 
-export interface InstrumentDto {
-
-    id: number
-    name: string
-}

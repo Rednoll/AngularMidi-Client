@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './view/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -15,11 +15,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { MidiComponent } from './midi/midi.component';
-import { MidiButtonComponent } from './midi/button/midi-button.component';
-import { MidisListComponent } from './control/midis-list/midis-list.component';
-import { PlayControlComponent } from './control/play-control/play-control.component';
-import { MidisDataControlComponent } from './control/midis-data-control/midis-data-control.component';
+import { MidiComponent } from './view/midi/midi.component';
+import { MidisDataControlComponent } from './view/control/midis-data-control/midis-data-control.component';
+import { MidiButtonComponent } from './view/midi/button/midi-button.component';
+import { MidisListComponent } from './view/control/midis-list/midis-list.component';
+import { PlayControlComponent } from './view/control/play-control/play-control.component';
 
 @NgModule({
     declarations: [

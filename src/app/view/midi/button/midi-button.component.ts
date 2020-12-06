@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { MidiButtonData } from './MidiButtonModel';
-import { Hsl } from 'src/app/utils/Hsl';
-import { MidiRowData } from '../row/MidiRowModel';
-import { InstrumentData } from '../instrument/InstrumentModel';
+
+import { MidiButtonModel } from 'src/app/model/midi-button.model';
+import { MidiRowModel } from 'src/app/model/midi-row.model';
 
 @Component({
   selector: 'app-midi-button',
@@ -11,7 +10,7 @@ import { InstrumentData } from '../instrument/InstrumentModel';
 })
 export class MidiButtonComponent {
 
-    @Input() public button: MidiButtonData = new MidiButtonData(MidiRowData.EMPTY);
+    @Input() public button: MidiButtonModel = new MidiButtonModel(MidiRowModel.EMPTY);
 
     click() {
 

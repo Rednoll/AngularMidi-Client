@@ -1,13 +1,12 @@
-import { Hsl } from 'src/app/utils/Hsl'
-import { MidiRowData } from '../row/MidiRowModel';
+import { MidiRowModel } from './midi-row.model';
 
-export class MidiButtonData {
+export class MidiButtonModel {
 
-    row: MidiRowData
+    row: MidiRowModel
     active: boolean = false
     playing: boolean = false
 
-    constructor(row: MidiRowData) {
+    constructor(row: MidiRowModel) {
 
         this.row = row;
     }
