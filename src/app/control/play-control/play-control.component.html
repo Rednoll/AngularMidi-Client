@@ -1,9 +1,7 @@
 <mat-card class="play-control-root">
-    <div class="buttons-container">
-        <mat-card><mat-icon color="primary">play_arrow</mat-icon></mat-card>
-        <div class="stub"></div>
-        <mat-card><mat-icon color="primary">loop</mat-icon></mat-card>
-        <div class="stub"></div>
-        <mat-card><mat-icon color="primary">stop</mat-icon></mat-card>
-    </div>
+    <mat-button-toggle-group [value]="midiService.playState" (change)="changeState($event.value)">
+        <mat-button-toggle value="play"><mat-icon color="primary">play_arrow</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="loop"><mat-icon color="primary">loop</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="stop"><mat-icon color="primary">stop</mat-icon></mat-button-toggle>
+    </mat-button-toggle-group>
 </mat-card>

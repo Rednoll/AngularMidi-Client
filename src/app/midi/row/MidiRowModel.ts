@@ -4,6 +4,8 @@ import { InstrumentData } from '../instrument/InstrumentModel';
 
 export class MidiRowData {
 
+    static EMPTY: MidiRowData = new MidiRowData(InstrumentData.EMPTY, Hsl.EMPTY, 0);
+
     color: Hsl
     instrument: InstrumentData
 

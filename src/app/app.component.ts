@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MidiService } from './midi/midi.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
     title = 'test-client'
+
+    constructor(public midiService: MidiService) {
+
+    }
+
+    testSaveCurrent() {
+
+        this.midiService.saveCurrentMidi();
+    }
+
+    nameChanged(event: any) {
+
+        this.midiService.currentMidi.name = event.target.value;
+    }
 }

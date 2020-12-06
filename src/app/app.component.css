@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
 
-    height: 40vw;
+    height: 45vw;
     width: 60vw;
 }
 
@@ -43,6 +43,7 @@
 
     display: flex;
     flex-direction: column;
+    min-height: min-content;
 
     justify-content: center;
     align-items: center;
@@ -62,7 +63,32 @@
     max-width: calc(100% / 4 * 3);
 }
 
+.midi-name-card {
+
+    position: relative;
+
+    flex-grow: 1;
+    background-color: darkslategray;
+    color: white;
+
+    width: calc(100% - 64px);
+    margin: 16px 16px 0px 16px;
+
+    height: 1.25em;
+    max-height: 1.25em;
+
+    font-size: 1.6rem;
+}
+
+.midi-name-card mat-form-field {
+
+    transform: translateY(-2em);
+    color: white;
+}
+
 app-midi {
+
+    flex-grow: 8;
 
     width: calc(100% - 32px);
     margin: 16px;

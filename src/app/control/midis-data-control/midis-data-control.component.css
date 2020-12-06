@@ -1,0 +1,23 @@
+.midis-data-control-root {
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: darkslategrey;
+}
+
+.midis-data-control-root mat-card {
+
+    padding: 8px !important;
+    width: 24px;
+    height: 24px;
+
+    transition: box-shadow 0.2s;
+
+    cursor: pointer;
+}
+
+.midis-data-control-root .stub {
+
+    width: 16px;
+}

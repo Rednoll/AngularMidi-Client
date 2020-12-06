@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { InstrumentService } from './instrument/instrument.service';
 import { MidiService } from './midi.service';
-import { MidiData } from './MidiModel';
+import { MidiModel } from './Midi';
 
 @Component({
   selector: 'app-midi',

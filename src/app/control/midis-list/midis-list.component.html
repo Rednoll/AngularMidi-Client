@@ -1,5 +1,5 @@
-<mat-selection-list [multiple]="false" (selectionChange)="select($event.option.value)">
-    <mat-list-option *ngFor="let midi of list.midis" [value]="midi">
-        {{midi}}
+<mat-selection-list [multiple]="false" (selectedOptions) = "midiService.currentMidi.id" (selectionChange)="select($event.option.value)">
+    <mat-list-option *ngFor="let midi of midiService.midisList" [value]="midi.id">
+        <div mat-line>{{midi.name}}</div>
     </mat-list-option>
 </mat-selection-list>

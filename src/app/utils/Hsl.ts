@@ -1,5 +1,7 @@
 export class Hsl {
  
+    static EMPTY: Hsl = new Hsl(0, 0, 0);
+
     hue: number
     saturation: number
     lightness: number

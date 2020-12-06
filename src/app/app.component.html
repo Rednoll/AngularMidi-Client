@@ -9,6 +9,11 @@
             </div>
 
             <div class="common-container right-container">
+                <mat-card class="midi-name-card">
+                    <mat-form-field appearance="standard">
+                        <input matInput placeholder="some name" (input)="nameChanged($event)" [value]="midiService.currentMidi.name">
+                    </mat-form-field>
+                </mat-card>
                 <app-midi></app-midi>
             </div>
         
@@ -17,7 +22,7 @@
         <div class="app-row-grid bottom-row-grid">
 
             <div class="common-container left-container">
-                <mat-icon>save</mat-icon>
+                <app-midis-data-control></app-midis-data-control>
             </div>
 
             <div class="common-container right-container">

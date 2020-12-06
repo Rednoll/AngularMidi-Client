@@ -11,13 +11,10 @@ import { InstrumentData } from '../instrument/InstrumentModel';
 })
 export class MidiButtonComponent {
 
-    @Input() button?: MidiButtonData | undefined;
+    @Input() public button: MidiButtonData = new MidiButtonData(MidiRowData.EMPTY);
 
     click() {
 
-        if(this.button) {
-
-            this.button.active = !this.button.active;
-        }
+        this.button.active = !this.button.active;
     }
 }

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { MidiService } from 'src/app/midi/midi.service';
-import { MidisListData } from './MidisListModel';
 
 @Component({
   selector: 'app-midis-list',
@@ -9,23 +8,12 @@ import { MidisListData } from './MidisListModel';
 })
 export class MidisListComponent {
 
-    @Input() list: MidisListData = new MidisListData([]);
-
-    constructor(private midiService: MidiService) { 
+    constructor(public midiService: MidiService) { 
         
-        this.update();
     }
 
-    select(value: string) {
+    select(id: number) {
 
-        this.midiService.findByName(value).subscribe(midi => this.midiService.updateCurrentMidi(midi));
-    }
-
-    update() {
-
-        this.midiService.fetchList().subscribe(list=> {
-
-            this.list = list;
-        })
+        this.midiService.findById(id).subscribe(midi => this.midiService.updateCurrentMidi(midi));
     }
 }

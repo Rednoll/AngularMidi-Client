@@ -4,7 +4,7 @@ import { MidiRowData, MidiRowDto } from './row/MidiRowModel';
 import { InstrumentData, InstrumentDto } from './instrument/InstrumentModel';
 import { InstrumentService } from './instrument/instrument.service';
 
-export class MidiData {
+export class MidiModel {
  
     id: number | undefined
     name: string = ""
@@ -22,23 +22,9 @@ export class MidiData {
 
     rows: MidiRowData[] = []
 
-    interval: any
-
     constructor(rowLength?: number) {
 
         this.rowLength = rowLength ? rowLength : 0;
-    }
-
-    launch() {
-
-        if(this.interval) return;
-
-        this.interval = setInterval(()=> this.play(), 200*(this.rowLength));
-    }
-
-    stop() {
-
-        clearInterval(this.interval);
     }
 
     createRow(instrument: InstrumentData): MidiRowData {
@@ -51,39 +37,30 @@ export class MidiData {
         return row;
     }
 
-    play() {
-        //...
-        for(let column = 0; column < this.rowLength; column++) {
+    play(columnIndex: number) {
 
-            let delay = 150 * (column + 1);
+        for(let row = 0; row < this.rows.length; row++) {
+            
+            this.rows[row].buttons[columnIndex].prePlay();
+        }
+
+        setTimeout(()=> {
+    
+            for(let row = 0; row < this.rows.length; row++) {
+            
+                this.rows[row].buttons[columnIndex].play();
+            }
 
             setTimeout(()=> {
-            
+    
                 for(let row = 0; row < this.rows.length; row++) {
-                    
-                    this.rows[row].buttons[column].prePlay();
+            
+                    this.rows[row].buttons[columnIndex].postPlay();
                 }
 
-                setTimeout(()=> {
-            
-                    for(let row = 0; row < this.rows.length; row++) {
-                    
-                        this.rows[row].buttons[column].play();
-                    }
+            }, 100);
 
-                    setTimeout(()=> {
-            
-                        for(let row = 0; row < this.rows.length; row++) {
-                    
-                            this.rows[row].buttons[column].postPlay();
-                        }
-        
-                    }, 100);
-    
-                }, 100);
-
-            }, delay);
-        }
+        }, 100);
     }
 
     toDto(): MidiDto {
@@ -91,7 +68,7 @@ export class MidiData {
         let body: MidiDto = {
 
             id: this.id,
-            name: "test",
+            name: this.name,
             rows: this.rows.map(row => row.toDto())
         }
 
@@ -99,11 +76,11 @@ export class MidiData {
     }
 
     //async load!
-    static fromDto(dto: MidiDto, instrumentService: InstrumentService): MidiData {
+    static fromDto(dto: MidiDto, instrumentService: InstrumentService): MidiModel {
 
         let rowLength = dto.rows[0].buttons.length;
     
-        let midi = new MidiData(rowLength);
+        let midi = new MidiModel(rowLength);
             midi.id = dto.id;
             midi.name = dto.name;
 

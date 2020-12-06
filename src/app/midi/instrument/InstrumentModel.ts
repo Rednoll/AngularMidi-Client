@@ -1,5 +1,7 @@
 export class InstrumentData {
 
+    static EMPTY: InstrumentData = new InstrumentData(-1, "");
+
     id: number
     name: string
     audio: HTMLAudioElement
