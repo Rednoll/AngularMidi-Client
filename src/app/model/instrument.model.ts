@@ -1,4 +1,5 @@
 import { InstrumentDto } from '../io/dto/instrument.dto';
+import { environment } from 'src/environments/environment'
 
 export class InstrumentModel {
 
@@ -14,7 +15,7 @@ export class InstrumentModel {
         this.name = name;
 
         this.audio = new Audio();
-        this.audio.src = "http://localhost:8080/instrument/sample/"+this.id
+        this.audio.src = environment.baseUrl+"/instrument/sample/"+this.id
         this.audio.volume = 0.125;
         this.audio.load();
     }
